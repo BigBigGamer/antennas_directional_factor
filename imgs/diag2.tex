@@ -1,0 +1,77 @@
+\documentclass[tikz]{standalone}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[russian]{babel}
+% \usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{cmap,pgfplots,pgfplotstable}
+\usetikzlibrary{arrows,calc}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{polar}
+\usepackage[outline]{contour}
+\begin{document}
+% \pgfplotstableread{data1-ris10.tsv}\mytable 
+	\begin{tikzpicture}
+		% \begin{axis}[
+        %     height=5cm,
+        %     width=5cm,
+		% 	scale=0.5,
+        %     grid=major,
+        % ]
+
+		% % Добавляем графики на рисунок
+        % \addplot[domain={-0:10},samples=700] plot { (cos(pi*cos(deg(x)))*cos(deg(x)))^2 };
+        % % \addplot[domain={-20:20},samples=700] plot { abs(sin(deg(x))/x) };
+        
+       
+		
+           % \end{axis}
+           \begin{axis}[
+            xlabel={$\theta$}, 			% ПодПись оси Y
+			ylabel={$F(\theta)$}, 
+	    	axis lines=middle, 		% выравнивание оси y:  middle (в нуле)|left|righ
+			scale=0.5,
+            major grid style={
+				line width=0.5pt, 	% толщина основных линий сетКи
+				% draw=black!50, 		% цвет основных линий сетКи: 50% черного (80% Белого) 
+				draw=none,
+			},
+			%
+			minor grid style={
+				line width=0.5pt, 	% толщина Промежуточных линий сетКи
+				% draw=black!20,		% цвет Промежуточных линий сетКи
+				draw=none,
+			},
+			%
+			minor x tick num=0,		% Количество Промежуточных линий между основными
+			minor y tick num=0,	
+            % xmax = 180,
+            x axis line style ={black!40},
+            y axis line style ={black!40},
+            y label style={
+    			% at={(axis description cs:0.01,1.07)},
+    			yshift=0.9em,
+    			anchor=center,		% расПоложение метКи ровно в точКе (0,1.1)
+    			black				% цвет метКи
+    		},		
+    		x label style={
+    		at={(current axis.right of origin)}, 
+            xshift=1.2ex, anchor=center
+            },
+            ticklabel style={
+ 				scale=0.85			% уменьшим размер ПодПисей метоК на осях
+             },
+             enlargelimits=true,
+             disabledatascaling,  
+           ]
+            \addplot[color =black, mark=none,domain=-100:100,samples=600] 
+                {cos(3*x)^2*cos(x)*2.7^(-x^2/2000)}; 
+            % equivalent to (x,{sin(..)cos(..)}), i.e.
+            % the expression is the RADIUS
+            \end{axis}  
+
+	\end{tikzpicture}	
+\end{document}
