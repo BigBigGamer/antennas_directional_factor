@@ -1,0 +1,16 @@
+
+*.aux
+
+*.fls
+
+*.log
+
+*.fdb_latexmk
+
+*.out
+
+*.toc
+
+*.gz
+
+*.driveupload
