@@ -65,10 +65,29 @@
  				scale=0.85			% уменьшим размер ПодПисей метоК на осях
              },
              enlargelimits=true,
-             disabledatascaling,  
+			 disabledatascaling,
+			 xmajorticks=false,
+			 ymajorticks=false,
+			 ymin = -0.4  
            ]
-            \addplot[color =black, mark=none,domain=-100:100,samples=600] 
-                {cos(3*x)^2*cos(x)*2.7^(-x^2/2000)}; 
+            \addplot[color =black, mark=none,domain=-80:80,samples=600] 
+				{cos(3*x)^2*cos(x)*2.7^(-x^2/2000)}; 
+			\draw[<->] (-30,-0.35) -- (30,-0.35);
+			\draw (-30,0) -- (-30,-0.4);
+			\draw (30,0) -- (30,-0.4);
+			\node(nine) at (0,-0.45) {\tiny $\Delta \theta_{0} $};
+
+
+			\draw[<->] (-15,-0.08) -- (15,-0.08);
+			\draw (-15,0) -- (-15,-0.15);
+			\draw (15,0) -- (15,-0.15);
+			\draw[dashed] (15,0) -- (15,0.5) -- (-15,0.5) -- (-15,0);
+			\node(nine) at (0,-0.2) { \tiny $\Delta \theta_{0.5} $};
+
+			\node(nine) at (10,1) { \scriptsize 1};
+			\node(nine) at (30,0.5) { \scriptsize 0.5};
+
+
             % equivalent to (x,{sin(..)cos(..)}), i.e.
             % the expression is the RADIUS
             \end{axis}  
