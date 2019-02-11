@@ -17,8 +17,6 @@
 	\begin{tikzpicture}
 
            \begin{polaraxis}[
-            height=5cm,
-			width=5cm,   
 			scale=1,
             ticks = none,
             major grid style={
@@ -32,20 +30,21 @@
 				% draw=black!20,		% цвет Промежуточных линий сетКи
 				draw=none,
             },
-            xmax = 180,
+            xmax = 120,
+            xmin = 60,
             ymax = 1,
-            enlargelimits=true,            
             x axis line style ={draw=none},
             y axis line style ={draw=none},
+            clip = false,
            ]
             \addplot+[color =black, mark=none,domain=0:180,samples=600] 
                 {sin(3*x)^2*sin(x)};
-            % \node[align = center] at (60,1) {\scriptsize Главный \\ \scriptsize лепесток};
-			% \node[align = center] at (150,1) {\scriptsize Побочные \\ \scriptsize лепестки};
+            \node[align = center] at (60,0.8) {\scriptsize Главный \\ \scriptsize лепесток};
+            \node[align = center] at (130,0.7) {\scriptsize Побочные \\ \scriptsize лепестки};
+            \draw[->] (57,0.68) -- (75,0.5);
+            \draw[->] (136,0.6) -- (136,0.4);
             
-                 
-            % equivalent to (x,{sin(..)cos(..)}), i.e.
-            % the expression is the RADIUS
+
             \end{polaraxis}  
 
 	\end{tikzpicture}	
