@@ -23,6 +23,16 @@ for i in range(1,len(lines1)):
     sqv.append(float(lines1[i].split(',')[0]))
     l.append(float(lines1[i].split(',')[1]))
 
+fid11=open('data/data4.txt','r')
+lines11=fid11.readlines()
+sqvnew=[] 
+lnew=[]
+for i in range(1,len(lines11)):
+    # print(float(lines[i].split(',')[0]))
+    sqvnew.append(float(lines11[i].split(',')[0]))
+    lnew.append(float(lines11[i].split(',')[1]))
+
+
 fid2=open('data/data2.txt','r')
 lines2=fid2.readlines()
 sqv2=[] 
@@ -53,31 +63,50 @@ fig = plt.figure()
 ax = fig.add_subplot(111)
 ax.plot(l,sqv,'ko')
 x_interpol = np.arange(0,70,0.05)
-Interpol = sp.interpolate.CubicSpline(l,sqv,extrapolate = False)
+Interpol = sp.interpolate.CubicSpline(lnew,sqvnew,extrapolate = False)
 ax.plot(x_interpol,Interpol(x_interpol),'r-')
-ax.set_xticks(range(0,70,3))
-ax.grid(True,which = 'major')
-plt.title(r'Зависимость интенсивности $|E|^2$ от координаты x')
+ax.set_xticks(range(0,70,3),minor = True)
+ax.set_yticks(range(46,52,1),minor = True)
+ax.grid(True,which = 'minor')
+# plt.title(r'Зависимость интенсивности $|E|^2$ от координаты x')
 plt.xlabel(r'x, мм')
 plt.ylabel(r'$|E|^2$, $\mu V$')
-# plt.show()
-fig.savefig('graphs/data1.png',dpi=500)
 
-# pdf1 = PdfPages('data1.pdf')
-# pdf1.savefig(fig)
-# pdf1.close()
+# a = [1,3,4,5]
+plt.show()
+fig.savefig('graphs/data111.png',dpi=500)
+
 
 
 # fig2 = plt.figure()
 # ax2 = fig2.add_subplot(111)
-# ax2.plot(deltaX,sqv2)
-# ax2.set_xticks(range(0,70,3),minor = True)
+
+# x_interpol = np.arange(0,50,0.05)
+# Interpol = sp.interpolate.CubicSpline(deltaX,sqv2,extrapolate = False)
+# ax2.plot(x_interpol,Interpol(x_interpol),'r-')
+
+# ax2.plot(deltaX,sqv2,'ko')
+# ax2.set_xticks(range(0,50,1),minor = True)
+# ax2.set_yticks(range(42,55,1),minor = True)
 # ax2.grid(True,which = 'minor')
-# plt.show(block = False)
+# plt.ylabel(r'$|E|^2$, $\mu V$')
+# plt.xlabel(r'$\Delta X$, мм')
+# plt.show()
+# fig2.savefig('graphs/data222.png',dpi=500)
+
+
+
 
 # fig3 = plt.figure()
 # ax3 = fig3.add_subplot(111)
-# ax3.plot(deltaX3,Gamma)
-# ax3.set_xticks(range(0,70,3),minor = True)
+# x_interpol = np.arange(30,60,0.05)
+# Interpol = sp.interpolate.CubicSpline(deltaX3,Gamma,extrapolate = False)
+# ax3.plot(x_interpol,Interpol(x_interpol),'r-')
+# ax3.plot(deltaX3,Gamma,'ko')
+# ax3.set_xticks(range(30,60,1),minor = True)
+# ax3.set_yticks(np.arange(0.02,0.07,0.005),minor = True)
 # ax3.grid(True,which = 'minor')
+# plt.ylabel(r'$\tilde{\Gamma}$')
+# plt.xlabel(r'$\Delta X$, мм')
 # plt.show()
+# fig3.savefig('graphs/data33.png',dpi=500)
